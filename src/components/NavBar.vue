@@ -61,8 +61,8 @@ export default {
   left: 0;
   z-index: 20;
   right: 0;
-  height: 3.6rem;
-  background-color: #fff;
+  height: $navbar-height;
+  background-color: $navbar-color;
   box-sizing: border-box;
   border-bottom: 1px solid #eaecef;
   padding: 0.7rem 1.5rem;
@@ -129,10 +129,19 @@ export default {
           cursor: pointer;
         }
 
-        .router-link-exact-active,
-        :hover {
+        @mixin activatedLink() {
           margin-bottom: -2px;
           border-bottom: 2px solid $vue-color;
+        }
+
+        .router-link-active {
+          @include activatedLink;
+        }
+
+        @media (hover) {
+          :hover {
+            @include activatedLink;
+          }
         }
       }
     }
